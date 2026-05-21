@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>매일묵상 · 욥기 4장</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #f5f0e8;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #3a2e20;
+    min-height: 100vh;
+  }
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #faf7f2;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .top-bar {
+    background: #3a2e20;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .top-label {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #c9a96e;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .top-date { font-size: 11px; color: #8a7a66; }
+  .hero {
+    background: linear-gradient(160deg, #3a2e20 0%, #5a4a32 60%, #7a6a50 100%);
+    padding: 36px 24px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.08);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 10px; left: -20px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(201, 169, 110, 0.05);
+  }
+  .book-tag {
+    display: inline-block;
+    background: rgba(201, 169, 110, 0.2);
+    border: 1px solid rgba(201, 169, 110, 0.4);
+    color: #c9a96e;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+  .hero-verse {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #f0e8d8;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-ref { font-size: 12px; color: #c9a96e; font-weight: 300; position: relative; z-index: 1; }
+  .deco-line { width: 40px; height: 1px; background: #c9a96e; margin: 14px 0 0; opacity: 0.5; }
+  .content { padding: 28px 22px; }
+  .para { font-size: 15px; line-height: 1.85; color: #4a3c28; margin-bottom: 18px; font-weight: 300; }
+  .para strong { font-weight: 500; color: #3a2e20; }
+  .inline-verse {
+    display: block;
+    background: #eee8d8;
+    border-left: 3px solid #c9a96e;
+    padding: 12px 16px;
+    margin: 20px 0;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #5a4a32;
+    border-radius: 0 6px 6px 0;
+  }
+  .inline-verse small { display: block; margin-top: 6px; font-size: 12px; color: #9a8a6e; font-family: 'Noto Sans KR', sans-serif; }
+  .divider { border: none; border-top: 1px solid #e0d8c8; margin: 24px 0; }
+  .reflection-box { background: #3a2e20; border-radius: 12px; padding: 20px 18px; margin: 24px 0; }
+  .reflection-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+  .reflection-text { font-family: 'Noto Serif KR', serif; font-size: 15px; color: #f0e8d8; line-height: 1.75; font-weight: 300; }
+  .reflection-text em { color: #c9a96e; font-style: normal; font-weight: 400; }
+  .prayer-box { background: #f0e8d8; border: 1px solid #d8c8a8; border-radius: 12px; padding: 20px 18px; margin: 20px 0 0; }
+  .prayer-label { font-size: 11px; font-weight: 500; letter-spacing: 2px; color: #9a8a6e; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .prayer-label::after { content: ''; flex: 1; height: 1px; background: #d0c0a0; }
+  .prayer-text { font-family: 'Noto Serif KR', serif; font-size: 14px; line-height: 1.8; color: #5a4a32; font-weight: 300; }
+  .summary-section { background: #fff; border: 1px solid #e8dfd0; border-radius: 12px; padding: 20px 18px; margin-top: 28px; }
+  .summary-title { font-size: 11px; font-weight: 500; letter-spacing: 2px; color: #9a8a6e; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .summary-title::after { content: ''; flex: 1; height: 1px; background: #e8dfd0; }
+  .summary-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 13px; }
+  .summary-num { min-width: 22px; height: 22px; border-radius: 50%; background: #eee8d8; border: 1px solid #d8c8a8; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 500; color: #8a7a5a; flex-shrink: 0; margin-top: 2px; }
+  .summary-text { font-size: 13.5px; line-height: 1.7; color: #4a3c28; font-weight: 300; }
+  .footer { padding: 20px 22px 32px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .footer-cross { font-size: 16px; color: #c9a96e; }
+  .footer-divider { width: 1px; height: 14px; background: #d0c0a0; }
+  .footer-near { font-size: 12px; color: #b0a090; letter-spacing: 1px; }
+  .footer-pastor { font-size: 12px; color: #8a7a5a; font-weight: 500; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="top-bar">
+    <span class="top-label">Near Ministry · 매일묵상</span>
+    <span class="top-date">욥기 4장</span>
+  </div>
+
+  <div class="hero">
+    <span class="book-tag">JOB 4:17</span>
+    <div class="hero-verse">
+      "사람이 어찌 하나님보다 의롭겠느냐<br>
+      사람이 어찌 그 창조하신 이보다<br>
+      깨끗하겠느냐"
+    </div>
+    <div class="hero-ref">욥기 4:17</div>
+    <div class="deco-line"></div>
+  </div>
+
+  <div class="content">
+
+    <p class="para">나도 모르게 스스로가 꽤 괜찮은 사람이라는 생각을 품고 살아갑니다. 큰 잘못을 저지르지 않았고, 나름대로 성실하게 살아왔으며, 신앙생활도 괜찮게 해 왔다는 자부심이 마음 속에 조용히 쌓입니다.</p>
+
+    <p class="para">그런데 그 자부심은 종종 다른 사람을 향해 고개를 들 때가 있습니다. 누군가 고난을 당하거나 실패하면, 그 원인을 찾으려는 마음이 생기고— 그 마음의 밑바닥에는, <strong>나는 저 사람보다 조금 더 낫다</strong>는 생각이 자리잡고 있을 때가 많습니다.</p>
+
+    <span class="inline-verse">
+      "죄 없이 망한 자가 누구인가 정직한 자의 끊어짐이 어디 있는가"
+      <small>욥기 4:7 — 엘리바스의 말</small>
+    </span>
+
+    <p class="para">고난에는 반드시 이유가 있고, 욥에게도 그 이유가 있을 것이라고 말하는 엘리바스. 그러나 그의 말 안에는 자신이 욥과 다르다는 <strong>자기 의</strong>가 조용히 깔려 있었습니다.</p>
+
+    <hr class="divider">
+
+    <p class="para">하나님 앞에서는 누구도 스스로 의롭다고 할 수 없습니다. 내가 의롭다는 느낌이 강할수록, 오히려 나의 한계를 보지 못하고 있는 것일 수 있습니다.</p>
+
+    <p class="para">이것을 인정하는 것은 약함이 아니라 오히려 우리를 변화시킵니다. 내가 하나님 앞에서 얼마나 작은 존재인지를 인식할 때, 다른 사람을 판단하는 대신 <strong>그 곁에 조용히 앉아 있을 수 있게</strong> 됩니다.</p>
+
+    <p class="para">스스로를 낮추고 하나님만을 의로우신 분으로 인정할 때, 비로소 누군가의 고난 앞에서 진짜 위로자가 될 수 있습니다.</p>
+
+    <div class="reflection-box">
+      <span class="reflection-icon">💭</span>
+      <div class="reflection-text">
+        <em>판단하는 자리</em>에 있습니까?<br>
+        <em>함께 앉아 있는 자리</em>에 있습니까?
+      </div>
+    </div>
+
+    <div class="prayer-box">
+      <div class="prayer-label">🙏 오늘의 기도</div>
+      <div class="prayer-text">"하나님 앞에서 의롭지 않은 작은 존재임을 인정하며, 마음속 자부심을 내려놓고 조용히 누군가를 위로하는 자리에 앉아있게 하여 주옵소서."</div>
+    </div>
+
+    <div class="summary-section">
+      <div class="summary-title">요약</div>
+      <div class="summary-item">
+        <div class="summary-num">1</div>
+        <div class="summary-text">크게 잘못한 것도 없고 성실하게 살아왔다는 자부심이 마음속에 조용히 쌓일 때가 있습니다.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">2</div>
+        <div class="summary-text">그 자부심은 누군가 고난을 당하거나 실패할 때, 나는 저 사람보다 낫다는 생각으로 이어지기 쉽습니다.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">3</div>
+        <div class="summary-text">욥의 고난 앞에서 원인을 찾으려 했던 엘리바스의 말 안에는 자신이 욥보다 낫다는 자기 의가 깔려 있었습니다.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">4</div>
+        <div class="summary-text">스스로 의롭다는 느낌이 강할수록 오히려 자신의 한계를 보지 못하고 있는 것일 수 있습니다.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">5</div>
+        <div class="summary-text">하나님 앞에서 작은 존재임을 인정하는 것은 약함이 아니라 우리를 변화시키는 힘입니다.</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-num">6</div>
+        <div class="summary-text">스스로의 한계를 인식할 때, 다른 사람을 판단하는 대신 그 곁에 조용히 앉을 수 있게 됩니다.</div>
+      </div>
+      <div class="summary-item" style="margin-bottom:0">
+        <div class="summary-num">7</div>
+        <div class="summary-text">하나님만을 의로우신 분으로 인정할 때, 비로소 누군가의 고난 앞에서 진짜 위로자가 될 수 있습니다.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <span class="footer-cross">✝</span>
+    <div class="footer-divider"></div>
+    <span class="footer-near">Near Ministry</span>
+    <div class="footer-divider"></div>
+    <span class="footer-pastor">Devotionals by Pastor Han</span>
+  </div>
+
+</div>
+</body>
+</html>
