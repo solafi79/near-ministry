@@ -111,6 +111,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---------- section base ---------- */
 section{padding:92px 0}
+[id]{scroll-margin-top:70px}
 .sec-head{margin-bottom:46px;max-width:40em}
 .sec-head .eyebrow{color:var(--es)}
 .sec-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1.35;letter-spacing:-.02em;margin-top:10px}
@@ -210,6 +211,21 @@ section{padding:92px 0}
 .pair .flow{text-align:center;max-width:36em;margin:56px auto 0;font-family:var(--serif);font-size:18px;line-height:2;color:var(--ink-soft)}
 .pair .flow b{color:var(--ink);font-weight:600}
 @media(max-width:640px){.pair .row{grid-template-columns:1fr;gap:30px}.pair .arrow{transform:rotate(90deg)}}
+
+
+/* ---------- NEAR ministry ---------- */
+.near{background:#fff;text-align:center}
+.near .eyebrow{color:#6e5563}
+.near h2{font-family:var(--sans);font-weight:700;letter-spacing:.3em;font-size:clamp(24px,4vw,34px);color:#6e5563;margin:12px 0 56px}
+.near .acro{display:grid;grid-template-columns:auto 2px auto;gap:0 34px;justify-content:center;max-width:640px;margin:0 auto;text-align:left}
+.near .acro .bar{background:#b2aba5;grid-row:1/5;grid-column:2}
+.near .acro .en{grid-column:1;font-family:var(--serif);font-size:clamp(18px,2.6vw,24px);line-height:2.1;color:#3a3236;white-space:nowrap}
+.near .acro .en b{color:#6e5563;font-weight:600;font-size:1.18em}
+.near .acro .ko{grid-column:3;font-size:clamp(15px,2.2vw,19px);line-height:2.5;color:#7a7378;font-weight:500;text-align:right}
+.near .sum{font-family:var(--serif);font-weight:700;font-size:clamp(20px,3vw,26px);line-height:2;margin:64px 0 56px;color:#222}
+.near .verse2{font-family:var(--serif);font-size:clamp(16px,2.3vw,19px);line-height:2.1;color:#6f696d;max-width:30em;margin:0 auto}
+.near .verse2 cite{display:block;font-style:normal;font-family:var(--serif);margin-top:2px;color:#85807f}
+@media(max-width:520px){.near .acro{gap:0 18px}}
 
 /* ---------- 저자 ---------- */
 .author{background:var(--cream)}
@@ -425,6 +441,29 @@ footer{background:#2a1f27;color:#a99ea6;font-size:13px;padding:26px 0;text-align
   </div>
 </section>
 
+<!-- ============ NEAR ministry ============ -->
+<section class="near" id="near">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">ABOUT</div>
+      <h2>NEAR ministry</h2>
+      <div class="acro">
+        <div class="en"><b>N</b>ew life in Christ</div>
+        <div class="en"><b>E</b>ternal Hope</div>
+        <div class="en"><b>A</b>lways with us</div>
+        <div class="en"><b>R</b>escued by grace</div>
+        <div class="bar"></div>
+        <div class="ko" style="grid-column:3;grid-row:1">그리스도 안의 새 생명</div>
+        <div class="ko" style="grid-column:3;grid-row:2">영원한 소망</div>
+        <div class="ko" style="grid-column:3;grid-row:3">항상 함께하시는 하나님</div>
+        <div class="ko" style="grid-column:3;grid-row:4">은혜로 얻은 구원</div>
+      </div>
+      <p class="sum">이 네 고백은 한 단어,<br>‘가까이(NEAR)’에 담겨 있습니다.</p>
+      <p class="verse2">“여호와께서는 자기에게 간구하는 모든 자 곧 진실하게 간구하는 모든 자에게 가까이 하시는도다”<cite>시편 145:18</cite></p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ 저자 ============ -->
 <section class="author">
   <div class="wrap">
@@ -442,7 +481,7 @@ footer{background:#2a1f27;color:#a99ea6;font-size:13px;padding:26px 0;text-align
 <!-- ============ 마무리 ============ -->
 <div class="closing">
   <div class="wrap rv">
-    <p class="l">이해되지 않는 날에도, 그래도 하나님 앞에서.<br>의미를 알 수 없는 오늘, 보이지 않아도,</p>
+    <p class="l">이해되지 않는 날에도,<br>하나님 앞에서.<br>의미를 알 수 없는 오늘,<br>보이지 않아도,</p>
     <div class="big">하나님 앞에서<span class="dot"></span></div>
     <div class="small">NEAR ministry</div>
   </div>
@@ -459,6 +498,17 @@ footer{background:#2a1f27;color:#a99ea6;font-size:13px;padding:26px 0;text-align
     es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
   },{threshold:.12});
   els.forEach(function(e){io.observe(e)});
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href').slice(1);
+      var t=id?document.getElementById(id):document.body;
+      if(!t)return;
+      e.preventDefault();
+      var y=id==='top'||!id?0:t.getBoundingClientRect().top+window.pageYOffset-64;
+      window.scrollTo({top:y,behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});
+    });
+  });
 })();
 </script>
 </body>
