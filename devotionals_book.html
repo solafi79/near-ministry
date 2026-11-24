@@ -52,7 +52,8 @@ a{color:inherit;text-decoration:none}
 .brand small{font-family:var(--sans);font-weight:400;color:var(--muted);margin-left:10px;font-size:12px;letter-spacing:.12em}
 .nav ul{display:flex;gap:26px;list-style:none;font-size:14px;color:var(--ink-soft)}
 .nav ul a:hover{color:var(--es)}
-@media(max-width:720px){.nav ul li:not(:last-child){display:none}}
+.nav .to-first .jbtag{display:none}
+@media(max-width:720px){.nav ul li:not(:last-child){display:none}.nav .brand small{display:none}.nav ul{font-size:13px}.nav .to-first{display:inline-block;padding:7px 13px;border:1px solid var(--jb);border-radius:999px;color:var(--jb-deep);font-weight:500;white-space:nowrap}.nav .to-first .jbtag{display:inline}}
 
 /* ---------- cover mockup ---------- */
 .book{
@@ -259,7 +260,7 @@ footer{background:#2a1f27;color:#a99ea6;font-size:13px;padding:26px 0;text-align
       <li><a href="#about">여는 글</a></li>
       <li><a href="#journey">30일 여정</a></li>
       <li><a href="#preview">미리 읽기</a></li>
-      <li><a href="#series">첫 번째 책</a></li>
+      <li><a href="#series" class="to-first">첫 번째 책 보기<span class="jbtag"> · 욥기</span></a></li>
     </ul>
   </div>
 </header>
